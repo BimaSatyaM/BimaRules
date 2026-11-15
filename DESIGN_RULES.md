@@ -40,12 +40,17 @@ The brand signature is anchored on an atmospheric **Sky Canvas & Warm Cream** da
 * **Subtle Borders (`--border`)**: `rgba(2, 132, 199, 0.12)` or `rgba(15, 23, 42, 0.08)`
 
 ### 2.2 Obsidian Theme (Night Mode)
-* **Canvas Background (`--bg-main`)**: `#050812` (Deep space obsidian midnight)
-* **Surface / Card Elevation (`--bg-card`)**: `#18181b` / `#121215` (Matte volcanic zinc)
+* **Canvas Background (`--bg-main`, `--bg-sidebar`)**: `#050812` (Deep space obsidian midnight)
+* **Surface / Item Card (`--bg-card`)**: `#21262d` (GitHub contributor box charcoal, dedicated for item cards)
+* **Surface Card Hover (`--bg-card-hover`)**: `#2a313c`
+* **Elevated Surfaces (`--bg-elevated`)**: `#262c36`
+* **Inputs & Inner Wells (`--bg-input`)**: `#121215`
+* **Item Card Borders (`--border`)**: `#30363d` (GitHub contributor box border)
+* **Borders Hover (`--border-hover`)**: `#484f58`
 * **Primary Accent (`--primary`)**: `#38bdf8` (Electric cyan / sky)
 * **Text Primary (`--text-primary`)**: `#f8fafc` (Clean snow white)
-* **Text Secondary (`--text-secondary`)**: `#94a3b8` (Slate smoke)
-* **Subtle Borders (`--border`)**: `rgba(255, 255, 255, 0.06)`
+* **Text Body (`--text-body`)**: `#d1d5db`
+* **Text Secondary (`--text-secondary`)**: `#9ca3af` (Slate smoke)
 
 ### 2.3 Strict Palette Discipline
 * **Max 3 Core Tones + 1 Accent**: A neutral ground, an ink tone, an elevated surface, and one deliberate accent color.
