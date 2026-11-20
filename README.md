@@ -24,11 +24,12 @@ Modern Craft (Unboxed):    Language  8             --> Clean typography, subtle 
 
 ---
 
-## 2. Color Palette & Dual-Theme Foundation
+## 2. Color Palette, Harmony & Dual-Theme Foundation
 
-The brand signature is anchored on an atmospheric **Sky Canvas & Warm Cream** daylight palette, with an obsidian dark mode.
+Every project does **not** need to hardcode the exact hex values below. Sections **2.1** and **2.2** are **Signature Reference Examples** showing how colors should be mixed together so every surface, border, ink, and accent feels cohesive and intentional. Use them directly when you want the signature aesthetic, or build a project-specific palette following the same mixing principles in **2.3**.
 
-### 2.1 Daylight Theme (Default Signature)
+### 2.1 Daylight Theme (Signature Example)
+*A reference example of pairing a cool atmospheric canvas with warm tactile surfaces and a harmonized ocean accent:*
 * **Canvas Background (`--bg-main`)**: `#edf7fe` (Crisp, sunlit sky blue canvas)
 * **Surface / Card Elevation (`--bg-card`)**: `#faf2df` / `#fdfaf3` (Warm artisanal cream)
 * **Surface Hover (`--bg-card-hover`)**: `#f3ead2` (Mellow toasted cream)
@@ -39,20 +40,32 @@ The brand signature is anchored on an atmospheric **Sky Canvas & Warm Cream** da
 * **Text Secondary (`--text-secondary`)**: `#475569` (Muted ocean slate)
 * **Subtle Borders (`--border`)**: `rgba(2, 132, 199, 0.12)` or `rgba(15, 23, 42, 0.08)`
 
-### 2.2 Obsidian Theme (Night Mode)
-* **Canvas Background (`--bg-main`)**: `#050812` (Deep space obsidian midnight)
-* **Surface / Card Elevation (`--bg-card`)**: `#18181b` / `#121215` (Matte volcanic zinc)
+### 2.2 Obsidian Theme (Night Mode Signature Example)
+*A reference example of pairing a deep midnight ground with stepped neutral-charcoal cards and a crisp electric accent:*
+* **Canvas Background (`--bg-main`, `--bg-sidebar`)**: `#050812` (Deep space obsidian midnight)
+* **Surface / Item Card (`--bg-card`)**: `#21262d` (GitHub contributor box charcoal, dedicated for item cards)
+* **Surface Card Hover (`--bg-card-hover`)**: `#2a313c`
+* **Elevated Surfaces (`--bg-elevated`)**: `#262c36`
+* **Inputs & Inner Wells (`--bg-input`)**: `#121215`
+* **Item Card Borders (`--border`)**: `#30363d` (GitHub contributor box border)
+* **Borders Hover (`--border-hover`)**: `#484f58`
 * **Primary Accent (`--primary`)**: `#38bdf8` (Electric cyan / sky)
 * **Text Primary (`--text-primary`)**: `#f8fafc` (Clean snow white)
-* **Text Secondary (`--text-secondary`)**: `#94a3b8` (Slate smoke)
-* **Subtle Borders (`--border`)**: `rgba(255, 255, 255, 0.06)`
+* **Text Body (`--text-body`)**: `#d1d5db`
+* **Text Secondary (`--text-secondary`)**: `#9ca3af` (Slate smoke)
 
-### 2.3 Strict Palette Discipline
+### 2.3 Color Mixing & Harmony Principles (How to Build Any Palette)
+When creating a custom color mix for a new project, follow the same structural balance shown in **2.1** and **2.2** so every color matches and elevates the others:
+* **Atmospheric Canvas + Complementary Surface**: Pair a calm, low-saturation background (`--bg-main`) with a deliberately distinct card surface (`--bg-card`) that creates natural separation without heavy shadows (for example, cool canvas + warm surface in light mode, or deep midnight ground + stepped charcoal surface in dark mode).
+* **Cohesive Tonal Stepping**: Derive `--bg-card-hover`, `--bg-elevated`, `--bg-input`, and `--border` directly from the same hue family as the canvas/surface using subtle lightness and opacity steps. Never mix clashing undertones or harsh pure `#000000`/`#ffffff` borders.
+* **One Deliberate Accent That Fits the Room**: Pick a single primary accent (`--primary`) that harmonizes with both the canvas and card surface, plus a translucent soft tint (`--primary-soft`) for subtle highlights and high-contrast ink (`--primary-ink`).
+* **Tinted Ink Hierarchy**: Keep `--text-primary` crisp and effortless to read, and tint `--text-secondary` subtly toward the palette's base temperature so muted text feels native to the background.
 * **Max 3 Core Tones + 1 Accent**: A neutral ground, an ink tone, an elevated surface, and one deliberate accent color.
 * **Banned Color Treatments**:
   * Generic purple-to-blue or cyan-to-purple gradients.
   * Rainbow tag soup (every tag getting a random pastel color).
   * High-saturation neon glows on static borders.
+  * Unmatched colors that clash with the surrounding surface temperature.
 
 ---
 
@@ -161,7 +174,35 @@ Before approving or shipping any frontend interface, answer these 7 audit questi
 1. **The Box Test**: Did I wrap any plain word, number, or category in a pill or box that could stand cleanly on whitespace alone? *(If yes, unbox it).*
 2. **The Nesting Test**: Is there any pill inside another pill, or an outer card wrapping a grid of cards? *(If yes, delete the outer wrapper).*
 3. **The Line Test**: Is there an arbitrary horizontal scrollbar, dividing border, or timeline line cutting awkwardly through elements? *(If yes, remove or break it).*
-4. **The Palette Test**: Does this design stick strictly to the daylight Sky Canvas + Warm Cream (or dark Obsidian) without random purple gradients?
+4. **The Palette Test**: Do the colors harmonize cleanly (following the 2.1 / 2.2 signature examples or the 2.3 mixing rules: max 3 core tones + 1 matching accent, no clashing undertones or random purple gradients)?
 5. **The Radius Test**: Are button, input, and card border-radii distinct and intentional rather than uniformly 999px?
 6. **The Shadow Test**: Are elements grounded flat on the surface rather than swimming in diffuse multi-layer drop shadows?
 7. **The Soul Test**: Does this look like handcrafted bespoke software built by an artisan, or an auto-generated AI template?
+
+## 7. Code Rules
+1. **No {/* ... */} or /* ... */ block comments**:
+  Never write {/* ... */} comments inside JSX/TSX.
+  Never write /* ... */ block comments in CSS/SCSS files (CSS does not support //, so omit block comments in stylesheets).
+  Never write /* ... */ or /** ... */ block comments in TypeScript/JavaScript; use // single-line comments instead.
+  Preserve valid strings, globs, and regexes containing /* (such as accept="image/*").
+2. **Clean Comments**:
+  Comment only the non-obvious why, not what the code does.
+  Keep code self-documenting with clear symbol names and small, single-purpose functions.
+3. **Change Discipline**:
+  Reuse existing project helpers, components, and tokens instead of duplicating logic.
+  Remove unused files, dead CSS rules, and orphan assets rather than leaving them behind.
+  Run project lint, tests, and build checks after non-trivial edits
+
+## 8. Commit Name Rules
+
+For new features that do not yet exist, use this format:
+- add(feature_name): [description/message]
+- example: add(login): redirection to use Single Sign On
+
+For feature updates or requests:
+- update(feature_name): [description/message]
+- example: update(login): update Single Sign On to include login by email as well
+
+For fixes, errors, or cases where a feature or component is not working:
+- fix(feature_name): [description/message]
+- example: fix(login): login by username not working
