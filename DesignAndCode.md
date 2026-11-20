@@ -170,3 +170,17 @@ Before approving or shipping any frontend interface, answer these 7 audit questi
 5. **The Radius Test**: Are button, input, and card border-radii distinct and intentional rather than uniformly 999px?
 6. **The Shadow Test**: Are elements grounded flat on the surface rather than swimming in diffuse multi-layer drop shadows?
 7. **The Soul Test**: Does this look like handcrafted bespoke software built by an artisan, or an auto-generated AI template?
+
+## 7. Code Rules
+1. **No {/* ... */} or /* ... */ block comments**:
+  Never write {/* ... */} comments inside JSX/TSX.
+  Never write /* ... */ block comments in CSS/SCSS files (CSS does not support //, so omit block comments in stylesheets).
+  Never write /* ... */ or /** ... */ block comments in TypeScript/JavaScript; use // single-line comments instead.
+  Preserve valid strings, globs, and regexes containing /* (such as accept="image/*").
+2. **Clean Comments**:
+  Comment only the non-obvious why, not what the code does.
+  Keep code self-documenting with clear symbol names and small, single-purpose functions.
+3. **Change Discipline**:
+  Reuse existing project helpers, components, and tokens instead of duplicating logic.
+  Remove unused files, dead CSS rules, and orphan assets rather than leaving them behind.
+  Run project lint, tests, and build checks after non-trivial edits
